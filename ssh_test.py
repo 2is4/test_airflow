@@ -32,7 +32,7 @@ dag = DAG(
    catchup=False
 )
 
-sample_bash_op = BashOperator(
+wait = BashOperator(
     task_id="wait",
     bash_command="sleep 30",
     retries=3,
