@@ -8,7 +8,7 @@ from airflow.utils.trigger_rule import TriggerRule
 from datetime import datetime, timedelta
 
 
-ssh_conn_id = 'ssh_demo'
+
 ssh_command = "echo 'Hello from remote server'"
 
 default_args = {
@@ -34,7 +34,7 @@ dag = DAG(
 
 ssh_task = SSHOperator(
     task_id='ssh_task',
-    ssh_conn_id=ssh_conn_id,
+    ssh_conn_id=ssh_test,
     command='echo "Hello, world!" > myfile.txt',
     retries=3,  # Retries for SSH task
     dag=dag,
