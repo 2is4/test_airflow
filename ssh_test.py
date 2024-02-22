@@ -34,7 +34,7 @@ dag = DAG(
 
 ssh_task = SSHOperator(
     task_id='ssh_task',
-    ssh_conn_id=ssh_test,
+    ssh_conn_id='ssh_test',
     command='echo "Hello, world!" > myfile.txt',
     retries=3,  # Retries for SSH task
     dag=dag,
