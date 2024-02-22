@@ -32,6 +32,12 @@ dag = DAG(
    catchup=False
 )
 
+sample_bash_op = BashOperator(
+    task_id="wait",
+    bash_command="sleep 30",
+    retries=3,
+    dag=dag
+)
 
 ssh_task = SSHOperator(
     task_id='ssh_task',
@@ -40,3 +46,5 @@ ssh_task = SSHOperator(
     retries=3,  # Retries for SSH task
     dag=dag,
 )
+
+wait >> ssh_task
