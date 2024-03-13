@@ -34,7 +34,7 @@ dag = DAG(
 
 ssh_ping = BashOperator(
     task_id="ssh_ping",
-    bash_command="ssh -q ec2-user@13.247.89.41 exit\nprintf $?",
+    bash_command="ping 13.247.89.4",
     retries=3,
     dag=dag
 )
