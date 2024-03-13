@@ -32,9 +32,10 @@ dag = DAG(
    catchup=False
 )
 
-wait = BashOperator(
-    task_id="wait",
-    bash_command="sleep 30",
+ssh_ping = BashOperator(
+    task_id="ssh_ping",
+    bash_command="ssh -q ec2-user@13.247.89.41 exit
+printf $?",
     retries=3,
     dag=dag
 )
@@ -47,4 +48,4 @@ ssh_task = SSHOperator(
     dag=dag,
 )
 
-wait >> ssh_task
+ssh_ping >> ssh_task
